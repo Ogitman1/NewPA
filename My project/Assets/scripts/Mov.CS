@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mov : MonoBehaviour
 {
-    public float SPEED { get; set; } = 3f;
+    public float SPEED { get; set; } = 5f;
     void Update()
     {
         HandleMovement();
