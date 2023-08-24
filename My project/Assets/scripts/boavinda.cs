@@ -1,44 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BoasVindas : MonoBehaviour
+public class Boavinda : MonoBehaviour
 {
-    public Text mensagemTexto;              // Referência ao componente de texto que exibirá a mensagem
-    public float delayEntreLetras = 0.1f;   // Atraso entre a exibição de cada letra
-    private string mensagemCompleta;        // A mensagem completa a ser exibida
-    private string mensagemAtual = "";      // Parte da mensagem que foi exibida até agora
-    private bool exibindoMensagem = false;
+    public GameObject Panel;
+    public Text dialogText;
+    public Button nextButton;
 
-    private void Start()
+    private string[] dialogMessages = {
+        "Bem-vindo ao meu jogo!",
+        "Explore o mundo e divirta-se!",
+        "Pressione o botão 'Próximo' para começar!"
+    };
+
+    private int Index = 0;
+
+    void Start()
     {
-        mensagemCompleta = mensagemTexto.text; // Armazena a mensagem original
-        mensagemTexto.text = ""; // Limpa o texto inicialmente
-        StartCoroutine(ExibirMensagemLetraPorLetra()); // Inicia a exibição letra por letra
+        // Inicializar o diálogo
+        Panel.SetActive(true);
+        dialogText.text = dialogMessages[Index];
+        nextButton.onClick.AddListener(ShowNextMessage);
     }
 
-    IEnumerator ExibirMensagemLetraPorLetra()
+    void ShowNextMessage()
     {
-        exibindoMensagem = true;
-        // Loop para exibir cada letra da mensagem
-        for (int i = 0; i <= mensagemCompleta.Length; i++)
+        Index++; // Avançar para a próxima mensagem
+        // Verificar se todas as mensagens foram exibidas
+
+        if (Index < dialogMessages.Length)
         {
-            mensagemAtual = mensagemCompleta.Substring(0, i); // Atualiza a parte da mensagem exibida
-            mensagemTexto.text = mensagemAtual; // Atualiza o texto exibido
-            yield return new WaitForSeconds(delayEntreLetras); // Aguarda o atraso
+            dialogText.text = dialogMessages[Index];
         }
-        exibindoMensagem = false;
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        if (exibindoMensagem && Input.GetKey(KeyCode.Q))
+        else
         {
-            StopCoroutine(ExibirMensagemLetraPorLetra()); // Interrompe a exibição letra por letra
-            mensagemTexto.text = mensagemCompleta; // Exibe a mensagem completa
-            exibindoMensagem = false; // Define que a mensagem não está mais sendo exibida
+            // Todas as mensagens foram exibidas, desativar a UI de diálogo
+            Panel.SetActive(false);
+            nextButton.interactable = false;
+            dialogText.enabled = false;
         }
     }
 }

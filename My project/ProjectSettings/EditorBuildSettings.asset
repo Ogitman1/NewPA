@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Fases/feito2.unity
+    guid: 69292e2a5fdb5434f885c356dd984ddf
+  - enabled: 1
+    path: Assets/Fases/feito.unity
+    guid: d099f0e81e5ff284e8f6d827f46c8bfb
   m_configObjects: {}
