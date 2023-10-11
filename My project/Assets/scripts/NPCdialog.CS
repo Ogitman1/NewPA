@@ -16,7 +16,7 @@ public class NPCdialog : MonoBehaviour
     public bool readytoSpeak; //  variavel bool que verifica se o dialogo pode estar pronto para acontecer
     public bool startDialogue; // variavel bool que começa o dialogo 
 
-    // metodo que vai ser chamado para inicializar os dialogos com seus respectivos valores
+    //Passo 1: metodo que vai ser chamado para inicializar os dialogos com seus respectivos valores
     void StartDialogue()
     {
         nameNPC.text = "Marcos";
@@ -32,6 +32,7 @@ public class NPCdialog : MonoBehaviour
         dialoguePanel.SetActive(false);
     }
 
+    //Passo 2
     // se ele entrar na area do NPC o readytospeak se torna verdadeiro
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -48,6 +49,7 @@ public class NPCdialog : MonoBehaviour
             readytoSpeak = false;
         }
     }
+    //Passo 4
 void NextDialogue()
     {
         dialogueIndex++; // aumenta o indice do dialogo
@@ -85,7 +87,8 @@ void NextDialogue()
     NextDialogue();
 }
 
-
+    //Passo3
+    
     void Update()
     {
         if (Input.GetButtonDown("Fire1") && readytoSpeak) // executa caso clique com o botão esquerdo do mouse e readytospeak seja verdadeiro
