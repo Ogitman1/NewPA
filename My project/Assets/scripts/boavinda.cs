@@ -3,14 +3,22 @@ using UnityEngine.UI;
 
 public class Boavinda : MonoBehaviour
 {
-    public GameObject Panel;
-    public Text dialogText;
-    public Button nextButton;
+    public GameObject Panel; // Panel Object
+    public Text dialogText; // Text Object
+    public Button nextButton; // Button Objecr
 
     private string[] dialogMessages = {
-        "Bem-vindo ao meu jogo!",
-        "Explore o mundo e divirta-se!",
-        "Pressione o botão 'Próximo' para começar!"
+        "Bem-vindo jogador",
+        "Agora essa que é a parte onde eu te ensino sobre os controles do jogo",
+        "Mas antes disso te peço um pequeno favor",
+        "'A Esperança' é um jogo indie de quests desenvolvido por um pequeno grupo para representar o Brasil no mercado de jogos",
+        "Se você gostar do jogo não exite em contribuir com uma pequena quantia para continuar representando o Brasil no jogos",
+        "Meu instagram é @santos_matheus18 caso se interesse em saber mais",
+        "Voltando no tutorial.",
+        "A, W, S, D são os controles de movimento.",
+        "Caso queira interagir com um NPC chegue próximo e clique nele.",
+        "Caso queira entrar em alguma porta ou pegar algum objeto se aproxime e aperte a tecla 'E'.",
+        "Bom, agora vamos praticar."
     };
 
     private int Index = 0;
