@@ -1,22 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Colliderporta : MonoBehaviour
 {
     private bool triggered = false;
-    [SerializeField]
-    private string proximafase;
+    [SerializeField] private string proximafase;
     public AudioSource audiosource;
+    public GameObject img;
 
     private void Start()
     {
-          audiosource = GameObject.FindGameObjectWithTag("Sounds").GetComponent<AudioSource>();
-          
+        img.SetActive(false);
     }
-
-    
 
     public void Jogar()
     {
@@ -31,28 +28,47 @@ public class Colliderporta : MonoBehaviour
             Debug.Log("oi");
         }
         else
-    {
-        Debug.LogWarning("Sounds object not found.");
-    }
+        {
+           
+            audiosource =  gameObject.AddComponent<AudioSource>(); //cria um componente AudioSource
+            AudioClip portaClip = Resources.Load<AudioClip>("Porta"); //Pega o audio MP3 chamado "Porta" e o importa
+            
+            audiosource.clip = portaClip; //Associa o audio "Porta"
+            audiosource.Play(); //Toca o audio
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        triggered = true;
-        Debug.Log(triggered);
-        
-    }
-    private void Update()
-    {
-        if (triggered)
+        if (collision.CompareTag("Player"))
         {
-        StartCoroutine(DelayedJogar());
+            triggered = true;
+            img.SetActive(true);
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            triggered = false;
+            img.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (triggered && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log(triggered);
+            StartCoroutine(DelayedJogar());
+        }
+    }
+
     private IEnumerator DelayedJogar()
     {
         ReproduzirSom();
-        yield return new WaitForSeconds(6.0f); // Change the delay time as needed
+        yield return new WaitForSeconds(3.0f); // Change the delay time as needed
         Jogar();
     }
 }
