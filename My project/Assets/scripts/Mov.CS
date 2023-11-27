@@ -5,14 +5,35 @@ using UnityEngine;
 public class Mov : MonoBehaviour
 {
     public float SPEED { get; set; } = 5f;
+    private float direcao;
+    private Animator animator;
+
+     void Start()
+    {
+        // Obtém o componente Animator do objeto
+        animator = GetComponent<Animator>();
+    }
+
     void Update()
     {
+        // Obtém as entradas do jogador para a velocidade e direção
+        SPEED = Input.GetAxis("Vertical");
+        direcao = Input.GetAxis("Horizontal");
         HandleMovement();
+        
+        if(SPEED != 0 || direcao != 0)
+        {
+            // Define a velocidade para acionar a animação de movimento
+            animator.SetFloat("Speed", Mathf.Abs(SPEED));
+            
+            // Define a direção para acionar a animação de movimento na direção correta
+            animator.SetFloat("Direcao", direcao);
+        }
+        else{
+             animator.SetFloat("Speed", 0);
+        }
     }
-    // public void ControlHandle(Mov newie, float speed)
-    // {
-    //     Mov.SPEED = speed;
-    // }
+
     public void HandleMovement()
     {
         // variaveis para poder adiciona velocidade no eixo x e y

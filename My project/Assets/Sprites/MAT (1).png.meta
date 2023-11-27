@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 532913571ad235a4c8955f0d6fa6bce9
+guid: c96a0d65d1530aa409db9d033c38174e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5962487811372395554
-    second: montgomery_0
+      213: -7212873648105993581
+    second: MAT (1)_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 13
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: montgomery_0
+      name: MAT (1)_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 6
         y: 1
-        width: 21
-        height: 23
+        width: 18
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,8 +148,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 22ca276e2130fb250800000000000000
-      internalID: 5962487811372395554
+      spriteID: 39acddae1a9b6eb90800000000000000
+      internalID: -7212873648105993581
       vertices: []
       indices: 
       edges: []
@@ -164,7 +164,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MAT (1)_0: -7212873648105993581
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
