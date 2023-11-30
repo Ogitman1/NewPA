@@ -2162,6 +2162,7 @@ GameObject:
   - component: {fileID: 2005360193}
   - component: {fileID: 2005360192}
   - component: {fileID: 2005360191}
+  - component: {fileID: 2005360196}
   m_Layer: 0
   m_Name: Danielle
   m_TagString: Player
@@ -2265,11 +2266,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005360187}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3193cea0627701f4fb4a4c9da39fe92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2005360189}
+  rb: {fileID: 2005360193}
+  moveDirection: {x: 0, y: 0}
 --- !u!210 &2005360192
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -2358,6 +2362,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db621b9bf55b607488fbe08d878e1e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2005360196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005360187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d01afa625fccb9439a29f7bad460658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb: {fileID: 0}
+  moveDirection: {x: 0, y: 0}
 --- !u!1 &2079092942
 GameObject:
   m_ObjectHideFlags: 0

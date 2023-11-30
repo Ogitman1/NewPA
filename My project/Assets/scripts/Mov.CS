@@ -3,56 +3,151 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Mov : MonoBehaviour
-{ //Passo 1 - Declaração das manipulações de variaveis
-    public float SPEED { get; set; } = 5f; //Velocidade de personagem
+{
+    public float SPEED { get; set; } = 5f;
     [SerializeField]
-    private Animator animator; //Propriedade Animator
+    private Animator animator;
     [SerializeField]
-    private Rigidbody2D rb; //Colisões 2D
+    private Rigidbody2D rb;
     [SerializeField]
-    private Vector2 moveDirection; //Fisica 2D
-    
-    //Passo 2 - Pegar o componente das váriáveis rb e animator
-    //Método Awake começa antes do método Start
-    void Awake () {
-        // Obtém o componente Animator do objeto
-        animator = GetComponent<Animator>();
-         rb = GetComponent<Rigidbody2D>();
-    }
+    private Vector2 moveDirection;
 
-    //Passo 3 - Manipulação das váriaveis no Update()
-    void Update()
+    private Dictionary<string, bool> AnimConditionsBool = new Dictionary<string, bool>();
+    private Dictionary<string, float> AnimConditionsFloat = new Dictionary<string, float>();
+
+    void InitializeValues()
     {
-        // Obtém as entradas do jogador para a velocidade e direção
-        float horizontal = Input.GetAxisRaw("Horizontal"); //eixo Horizontal
-        float vertical = Input.GetAxisRaw("Vertical"); //eixo Vertical
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        AnimConditionsFloat.Add("Horizontal", 0f);
+        AnimConditionsFloat.Add("Vertical", 0f);
+        AnimConditionsBool.Add("Parado", false);
+        AnimConditionsBool.Add("andlado", false);
+        AnimConditionsBool.Add("andcostas", false);
+    }
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        InitializeValues();
+    }
 
-        if(vertical!= 0 || horizontal != 0)
+    void SetAnimFloat(string condition, float value)
+    {
+        if (AnimConditionsFloat.ContainsKey(condition) && !Mathf.Approximately(AnimConditionsFloat[condition], value))
         {
-            // Calcula direções dos eixos y e x
-            moveDirection = new Vector2(horizontal, vertical);
-            // Define a velocidade para acionar a animação de movimento
-            animator.SetFloat("Vertical", SPEED);
-            
-            // Define a direção para acionar a animação de movimento na direção correta
-            animator.SetFloat("Horizontal", horizontal);
-            animator.SetFloat("Vertical", vertical);
-
-        }
-        
-        else{
-            moveDirection = Vector2.zero; 
-             animator.SetFloat("Vertical", 0);
-             animator.SetFloat("Horizontal", 0);
+            AnimConditionsFloat[condition] = value;
+            animator.SetFloat(condition, value);
         }
     }
-    //Passo 4 - Manipulação do Vector3 para que o personagem ande em todas as direções
- private void FixedUpdate()
+
+    void SetAnimBool(string condition, bool value)
+    {
+        if (AnimConditionsBool.ContainsKey(condition) && AnimConditionsBool[condition] != value)
+        {
+            AnimConditionsBool[condition] = value;
+            animator.SetBool(condition, value);
+        }
+    }
+
+    void CalcularVelocidade()
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        moveDirection = new Vector2(horizontal, vertical);
+
+        if ( vertical != 0 || horizontal != 0)
+        {
+            SetAnimFloat("Vertical", vertical);
+            SetAnimFloat("Horizontal", horizontal);
+            SetAnimBool("Parado", false);
+
+            // Adicione a verificação para movimento lateral
+            if (horizontal > 0)
+            {
+                // Movimento para a direita
+                SetAnimFloat("Horizontal", horizontal);
+                SetAnimFloat("Vertical", 0);
+                SetAnimBool("andlado", true);
+                SetAnimBool("andcostas", false);
+            }
+            else if (horizontal < 0)
+            {
+                // Movimento para a esquerda
+                SetAnimFloat("Horizontal", Mathf.Abs(horizontal));
+                SetAnimFloat("Vertical", 0);
+                SetAnimBool("andlado", true);
+                SetAnimBool("andcostas", false);
+            }
+            else
+            {
+                // Não há movimento lateral
+                SetAnimFloat("Horizontal", 0);
+                SetAnimFloat("Vertical", vertical);
+                SetAnimBool("andlado", false);
+                SetAnimBool("andcostas", false);
+            }
+        }
+        else
+        {
+            SetAnimFloat("Horizontal", 0);
+            SetAnimFloat("Vertical", 0);
+            moveDirection = Vector2.zero;
+
+            // Verifique se há movimento lateral quando a velocidade é zero
+            if (horizontal > 0)
+            {
+                // Movimento para a direita
+                SetAnimBool("andlado", false);
+                SetAnimBool("andcostas", false);
+            }
+            else if (horizontal < 0)
+            {
+                // Movimento para a esquerda
+                SetAnimBool("andlado", false);
+                SetAnimBool("andcostas", false);
+            }
+
+            // Verifique se há movimento vertical quando a velocidade é zero
+            if (vertical > 0)
+            {
+                SetAnimBool("Parfrente", false);
+                SetAnimBool("andlado", false);
+                SetAnimBool("andcostas", false);
+            }
+            else if (vertical < 0)
+            {
+                SetAnimBool("Partras", false);
+                SetAnimBool("andlado", false);
+                SetAnimBool("andcostas", false);
+            }
+        }
+    }
+
+    void FixedUpdate()
     {
         Vector3 movePosition = (SPEED * Time.fixedDeltaTime * moveDirection.normalized) + rb.position;
         rb.MovePosition(movePosition);
-       // HandleMovement();
+
+        // Pare de calcular a velocidade quando a velocidade for zero
+        if (Mathf.Approximately(rb.velocity.magnitude, 0f))
+        {
+            SetAnimFloat("Horizontal", 0);
+            SetAnimFloat("Vertical", 0);
+            SetAnimBool("andlado", false);
+            SetAnimBool("andcostas", false);
+            SetAnimBool("ParLado", false);
+            SetAnimBool("Parfrente", false);
+            SetAnimBool("Partras", false);
+            SetAnimBool("Parado", true);
+        }
+        else
+        {
+            CalcularVelocidade();
+        }
     }
+}
+
     /*
     public void HandleMovement()
     {
@@ -83,5 +178,5 @@ public class Mov : MonoBehaviour
     
     }
     */
-}
+
 
