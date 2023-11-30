@@ -29,6 +29,7 @@ public class Newmov : MonoBehaviour
         AnimConditionsFloat.Add("Speed", 0f);
         AnimConditionsBool.Add("andlado", false);
         AnimConditionsBool.Add("andcostas", false);
+        AnimConditionsBool.Add("andfrente", false);
         AnimConditionsBool.Add("Parado", false);
     }
 
@@ -80,6 +81,13 @@ public class Newmov : MonoBehaviour
                 SetAnimBool("andcostas", true);
                 SetAnimFloat("Speed", 5f);
             }
+            else if(vertical < 0)
+            {
+                SetAnimBool("andlado", false);
+                SetAnimBool("andcostas", false);
+                SetAnimBool("andfrente", true);
+                SetAnimFloat("Speed", 5f);
+            }
         }
         else
         {
@@ -91,6 +99,7 @@ public class Newmov : MonoBehaviour
             {
                 SetAnimBool("andlado", false);
                 SetAnimBool("andcostas", false);
+                SetAnimBool("andfrente", false);
                 SetAnimBool("Parado", true);
                 SetAnimFloat("Speed", 0f);
             }
@@ -98,6 +107,7 @@ public class Newmov : MonoBehaviour
             {
                 SetAnimBool("andlado", false);
                 SetAnimBool("andcostas", false);
+                SetAnimBool("andfrente", false);
                 SetAnimBool("Parado", true);
                 SetAnimFloat("Speed", 0f);
             
@@ -106,39 +116,32 @@ public class Newmov : MonoBehaviour
             {
                 SetAnimBool("Parado", false);
                 SetAnimFloat("Speed", 5f);
+                SetAnimBool("andcostas", false);
+                SetAnimBool("andfrente", false);
                 
             }
 
-          /*  if (vertical > 0)
-            {
-                SetAnimBool("ParFrente", false);
-                SetAnimBool("ParTras", true);
-            }
-            else if (vertical < 0)
-            {
-                SetAnimBool("ParTras", false);
-                SetAnimBool("ParFrente", true);
-            }
-            else
-            {
-                SetAnimBool("ParFrente", false);
-                SetAnimBool("ParTras", false);
-            }*/
             if (vertical > 0)
             {
                 SetAnimBool("Parado",true);
-                SetAnimFloat("Speed",0f);
+                SetAnimFloat("Speed", 0f);
+                SetAnimBool("andcostas", false);
+                SetAnimBool("andfrente", false);
+                SetAnimBool("andfrente", false);
             }
             else if (vertical < 0)
             {
                 
                 SetAnimBool("Parado",true);
-                SetAnimFloat("Speed",0f);
+                SetAnimFloat("Speed", 0f);
+                SetAnimBool("andcostas", false);
+                SetAnimBool("andfrente", false);
             }
             else
             {
                 SetAnimBool("Parado",true);
                 SetAnimFloat("Speed",0f);
+                SetAnimBool("andlado", false);
             }
         }
     }
