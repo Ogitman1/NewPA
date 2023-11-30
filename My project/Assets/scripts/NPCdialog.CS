@@ -19,7 +19,7 @@ public class NPCdialog : MonoBehaviour
     //Passo 1: metodo que vai ser chamado para inicializar os dialogos com seus respectivos valores
     void StartDialogue()
     {
-        nameNPC.text = "Matheus;
+        nameNPC.text = "Matheus";
         imageNPC.sprite = spriteNPC;
         startDialogue = true;
         dialogueIndex = 0;
