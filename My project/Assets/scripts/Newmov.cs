@@ -11,6 +11,7 @@ public class Newmov : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     private Vector2 moveDirection;
+    public float distanceToMove = 0.5f; // Distância para verificar colisões
 
     private Dictionary<string, bool> AnimConditionsBool = new Dictionary<string, bool>();
     private Dictionary<string, float> AnimConditionsFloat = new Dictionary<string, float>();
@@ -19,6 +20,8 @@ public class Newmov : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate; 
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         InitializeValues();
     }
 
@@ -53,12 +56,32 @@ public class Newmov : MonoBehaviour
 
     void CalcularVelocidade()
     {
+        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        moveDirection = new Vector2(horizontal, vertical);
-
-        if (vertical != 0 || horizontal != 0)
+        Vector2 newMoveDirection = new Vector2(horizontal, vertical).normalized;
+    
+        //bool mudouDirecao = (horizontal != 0 || vertical != 0) && (newMoveDirection.x == horizontal || newMoveDirection.y == vertical);
+        // Se houver uma colisão, ajustar o movimento
+        if (newMoveDirection != Vector2.zero && newMoveDirection != moveDirection)
         {
+            Debug.Log("Foi");
+            moveDirection = newMoveDirection;
+            
+        }
+        RaycastHit2D hit = Physics2D.Raycast(rb.position, moveDirection, distanceToMove);
+        if (hit.collider != null)
+        {
+            Debug.Log("Colidiu");
+             moveDirection = Vector2.zero;
+             SPEED = 0f;
+        }
+            
+        else{
+            Debug.Log("Saiu");
+            newMoveDirection = new Vector2(horizontal, vertical).normalized;
+            SPEED = 5f;
+        }
             SetAnimFloat("Vertical", Mathf.Abs(vertical));
             SetAnimFloat("Horizontal", Mathf.Abs(horizontal));
             SetAnimBool("Parado", false);
@@ -88,12 +111,12 @@ public class Newmov : MonoBehaviour
                 SetAnimBool("andfrente", true);
                 SetAnimFloat("Speed", 5f);
             }
-        }
+        
         else
         {
             SetAnimFloat("Horizontal", horizontal);
             SetAnimFloat("Vertical", vertical);
-           // moveDirection = Vector2.zero;
+           // newMoveDirection = Vector2.zero;
 
             if (horizontal > 0)
             {
@@ -144,12 +167,11 @@ public class Newmov : MonoBehaviour
                 SetAnimBool("andlado", false);
             }
         }
+        rb.MovePosition(rb.position + moveDirection * Time.deltaTime * SPEED);
     }
 
     void FixedUpdate()
     {
-        Vector3 movePosition = (SPEED * Time.fixedDeltaTime * moveDirection.normalized) + rb.position;
-        rb.MovePosition(movePosition);
         CalcularVelocidade();
     }
 }

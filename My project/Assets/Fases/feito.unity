@@ -2374,7 +2374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d01afa625fccb9439a29f7bad460658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 2005360189}
   rb: {fileID: 0}
   moveDirection: {x: 0, y: 0}
 --- !u!1 &2079092942
