@@ -2163,7 +2163,7 @@ GameObject:
   - component: {fileID: 2005360192}
   - component: {fileID: 2005360191}
   - component: {fileID: 2005360196}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Danielle
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2208,8 +2208,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -363515243
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 1442106021, guid: e5cd7c013bb1eb14495a59d4852f8f45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2375,8 +2375,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2005360189}
-  rb: {fileID: 0}
+  rb: {fileID: 2005360193}
   moveDirection: {x: 0, y: 0}
+  smallDistance: 1
 --- !u!1 &2079092942
 GameObject:
   m_ObjectHideFlags: 0

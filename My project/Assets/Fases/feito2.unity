@@ -272,9 +272,8 @@ GameObject:
   - component: {fileID: 264136336}
   - component: {fileID: 264136335}
   - component: {fileID: 264136334}
-  - component: {fileID: 264136333}
   - component: {fileID: 264136340}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Danielle1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -296,18 +295,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &264136333
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264136331}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_SortAtRoot: 0
 --- !u!111 &264136334
 Animation:
   m_ObjectHideFlags: 0
@@ -396,7 +383,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.1882353, y: 0.28235295}
+    oldSize: {x: 0.24615385, y: 0.36923078}
     newSize: {x: 0.1882353, y: 0.28235295}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -446,6 +433,7 @@ MonoBehaviour:
   animator: {fileID: 264136336}
   rb: {fileID: 264136338}
   moveDirection: {x: 0, y: 0}
+  smallDistance: 1
 --- !u!212 &264136340
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -484,9 +472,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -363515243
+  m_SortingLayer: -1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -715156117, guid: e5cd7c013bb1eb14495a59d4852f8f45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -848,9 +836,8 @@ GameObject:
   m_Component:
   - component: {fileID: 966602223}
   - component: {fileID: 966602222}
-  - component: {fileID: 966602225}
   - component: {fileID: 966602224}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: City4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,8 +882,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -363515243
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5f4a97dfe73353948a4ebfa1677c6742, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -970,18 +957,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 19.2, y: 10.8}
   m_EdgeRadius: 0
---- !u!210 &966602225
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966602221}
-  m_Enabled: 1
-  m_SortingLayerID: -479367327
-  m_SortingLayer: -2
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
 --- !u!1 &1238751660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,10 +1405,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1873075201}
   - component: {fileID: 1873075203}
-  - component: {fileID: 1873075202}
   - component: {fileID: 1873075205}
   - component: {fileID: 1873075204}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Matheus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1455,18 +1429,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &1873075202
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873075200}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_SortAtRoot: 0
 --- !u!212 &1873075203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1505,9 +1467,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -363515243
+  m_SortingLayer: -1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -7212873648105993581, guid: c96a0d65d1530aa409db9d033c38174e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

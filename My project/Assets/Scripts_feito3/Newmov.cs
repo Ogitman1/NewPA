@@ -11,7 +11,7 @@ public class Newmov : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     private Vector2 moveDirection;
-    public float smallDistance = 4f; // Distância para verificar colisões
+    public float smallDistance = 0.2f; // Distância para verificar colisões
     
     private Dictionary<string, bool> AnimConditionsBool = new Dictionary<string, bool>();
     private Dictionary<string, float> AnimConditionsFloat = new Dictionary<string, float>();
@@ -64,11 +64,9 @@ public class Newmov : MonoBehaviour
         Vector2 newMoveDirection = new Vector2(horizontal, vertical).normalized;
         Ray ray = new Ray(rb.position, moveDirection);
         LayerMask paredesLayerMask = LayerMask.GetMask("Default");
-        LayerMask portasLayerMask = LayerMask.GetMask("Portas");
 
         // Declaração de variáves Raycast
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, smallDistance, paredesLayerMask);
-        RaycastHit2D porta = Physics2D.Raycast(ray.origin, ray.direction, smallDistance, portasLayerMask);
         //Se houve colisão
         if (hit)
         {
