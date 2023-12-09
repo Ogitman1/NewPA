@@ -19,15 +19,16 @@ public class Portas : MonoBehaviour
     {
         img.SetActive(false);
     }
-   /* void Update()
-{
+  void Update()
+  {
     HandleDoorState();
-}*/
+  }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             img.SetActive(true);
+            Debug.Log("Entrou");
             HandleDoorState();
         }
         
@@ -37,28 +38,25 @@ public class Portas : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             img.SetActive(false);
+            Debug.Log("Ja foi");
+            HandleDoorState();
         }
     }
 
     // Método para lidar com o estado da porta
     void HandleDoorState()
     {
-         if (Input.GetKeyDown(keyToOpen))
+         if (Input.GetKeyDown(keyToOpen )&& !isOpen)
     {
-        isOpen = !isOpen;
+        
         Debug.Log("Door state: " + isOpen);
-    }
-
-    // Apply the corresponding rotation based on the door state
-    if (isOpen)
-    {
-        // Replace this with your specific code for an open door
+        isOpen = !isOpen;
         transform.Rotate(new Vector3(0, 90, 0));
     }
-    else
+    else if(Input.GetKeyDown(keyToOpen) && !isOpen)
     {
         // Replace this with your specific code for a closed door
-        transform.Rotate(new Vector3(0, -50, 0));
+        transform.Rotate(new Vector3(0, -90, 0));
     }
     }
 }
