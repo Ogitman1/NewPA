@@ -17,7 +17,7 @@ public class Porta222 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(keyToOpen))
+        if (Input.GetKeyDown(keyToOpen) && isOpen)
         {
             Debug.Log("E");
             if (IsPlayerNear() && img != null)
@@ -33,7 +33,10 @@ public class Porta222 : MonoBehaviour
             }
         }
     }
-
+    public void SetOpen()
+    {
+        isOpen = !isOpen;
+    }
     bool IsPlayerNear()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");

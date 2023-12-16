@@ -11,7 +11,9 @@ public class Newmov : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     private Vector2 moveDirection;
-    public float smallDistance = 0.2f; // Distância para verificar colisões
+    [SerializeField]
+    private GameObject img;
+    public float smallDistance = 0.01f; // Distância para verificar colisões
     
     private Dictionary<string, bool> AnimConditionsBool = new Dictionary<string, bool>();
     private Dictionary<string, float> AnimConditionsFloat = new Dictionary<string, float>();
@@ -80,6 +82,7 @@ public class Newmov : MonoBehaviour
             else
             {
                 SPEED = 0f;
+
             }
         }
         //Se não houve colisão

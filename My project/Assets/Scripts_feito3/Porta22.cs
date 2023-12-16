@@ -49,6 +49,7 @@ public class Porta22 : MonoBehaviour
             else
             {
                 Debug.Log("Player is not near");
+                return false;
             }
         }
         else
